@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edit_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Personal Code:"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edit_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter First Name:" />
+
+    <EditText
+        android:id="@+id/edit_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Last Name:" />
+
+    <EditText
+        android:id="@+id/edit_salary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Salary:"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edit_hour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Monthly working hour:"
+        android:inputType="number"/>
+
+    <Spinner
+        android:id="@+id/drop_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/posts" />
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit" />
+</LinearLayout>

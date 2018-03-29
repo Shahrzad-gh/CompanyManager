@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CompanyManager</string>
+    <string-array name="posts">
+        <item>manager</item>
+        <item>developer</item>
+        <item>employee</item>
+    </string-array>
+    <string-array name="posts_all">
+        <item>all</item>
+        <item>manager</item>
+        <item>developer</item>
+        <item>employee</item>
+    </string-array>
+</resources>
