@@ -6,18 +6,18 @@ package ir.quera.companymanager;
 
 public class Staff {
 
-    private long id ;
+    private String id ;
     private String S_name;
     private String S_Family;
     private int S_per_hour;
     private int S_hour;
-    private int S_position;
+    private String S_position;
 
     public Staff(){
 
     }
 
-    public Staff(long id, String s_name, String s_Family, int s_per_hour, int s_hour, int s_position) {
+    public Staff(String id, String s_name, String s_Family, int s_per_hour, int s_hour, String s_position) {
         this.id = id;
         S_name = s_name;
         S_Family = s_Family;
@@ -26,11 +26,11 @@ public class Staff {
         S_position = s_position;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -66,11 +66,11 @@ public class Staff {
         S_hour = s_hour;
     }
 
-    public int getS_position() {
+    public String getS_position() {
         return S_position;
     }
 
-    public void setS_position(int s_position) {
+    public void setS_position(String s_position) {
         S_position = s_position;
     }
 }

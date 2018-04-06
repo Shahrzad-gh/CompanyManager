@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.DropBoxManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,12 +32,14 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
 
         submit = (Button)findViewById(R.id.btn_submit);
+
         code = (EditText)findViewById(R.id.edit_code);
         firstName = (EditText)findViewById(R.id.edit_firstname);
         lastName = (EditText)findViewById(R.id.edit_lastname);
         salary = (EditText)findViewById(R.id.edit_salary);
         hour = (EditText)findViewById(R.id.edit_hour);
         position = (Spinner)findViewById(R.id.drop_position);
+
         result = (TextView)findViewById(R.id.txt_result);
 
         staffDatabaseAdapter = new StaffDataBaseAdapter(RegisterActivity.this);
@@ -45,36 +48,43 @@ public class RegisterActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(code.getText() == null)
+
+                if(code.getText().toString().matches(""))
                     code.setHintTextColor(Color.parseColor("#FF0000"));
-                else if (firstName.getText() == null)
-                    firstName.setHintTextColor(Color.parseColor("#FF0000"));
-                else if (lastName.getText() == null)
-                    lastName.setHintTextColor(Color.parseColor("#FF0000"));
-                else if (salary.getText() == null)
-                    salary.setHintTextColor(Color.parseColor("FF0000"));
-                else if (hour.getText() == null)
-                    salary.setHintTextColor(Color.parseColor("FF0000"));
                 else
-                {
-                    staff.setId(Integer.parseInt(code.getText().toString()));
+                    staff.setId(code.getText().toString());
+
+                if (firstName.getText().toString().matches(""))
+                    firstName.setHintTextColor(Color.parseColor("#FF0000"));
+                else
                     staff.setS_name(firstName.getText().toString());
+
+                if (lastName.getText().toString().matches(""))
+                    lastName.setHintTextColor(Color.parseColor("#FF0000"));
+                else
                     staff.setS_Family(lastName.getText().toString());
+
+                if (salary.getText().toString().matches(""))
+                    salary.setHintTextColor(Color.parseColor("#FF0000"));
+                else
                     staff.setS_per_hour(Integer.parseInt(salary.getText().toString()));
+
+                if (hour.getText().toString().matches(""))
+                    hour.setHintTextColor(Color.parseColor("#FF0000"));
+                else
                     staff.setS_hour(Integer.parseInt(hour.getText().toString()));
-                    staff.setS_position(Integer.parseInt(position.getSelectedItem().toString()));
 
-                    if (staffDatabaseAdapter.updateStaff(staff) > 0){
-                        result.setText("Duplicate Personal Code");
-                    }
+                staff.setS_position(position.getSelectedItem().toString());
 
-                    else {
-                        staffDatabaseAdapter.saveStaff(staff);
-                        result.setText("Duplicate Personal Code");
-                        startActivity(new Intent(RegisterActivity.this, RegisterActivity.class));
-                    }
-
+                if (staffDatabaseAdapter.readStaff(staff.getId()) != null){
+                    result.setText("Duplicate Personal Code");
                 }
+                else if(staffDatabaseAdapter.saveStaff(staff) !=0 ){
+                    result.setText("Registration successful");
+                    finish();
+                    startActivity(new Intent(RegisterActivity.this, RegisterActivity.class));
+                }
+
             }
         });
 }
